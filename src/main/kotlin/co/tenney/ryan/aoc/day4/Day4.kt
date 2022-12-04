@@ -1,8 +1,8 @@
-package co.tenney.ryan.aoc.day2
+package co.tenney.ryan.aoc.day4
 
 import co.tenney.ryan.aoc.AocDay
 
-class Day2 : AocDay<Int>(2) {
+class Day4 : AocDay<Int>(4) {
 
     override fun processInput(input: List<String>): Unit {
 
