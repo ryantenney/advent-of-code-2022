@@ -3,7 +3,7 @@ package co.tenney.ryan.aoc.day2
 import co.tenney.ryan.aoc.AocDay
 import co.tenney.ryan.util.LoggingContext
 
-class Day2 : AocDay<Int>(2), LoggingContext<Day2> {
+class Day2 : AocDay<Int>(2) {
 
     var rounds: List<Round>? = null
 
