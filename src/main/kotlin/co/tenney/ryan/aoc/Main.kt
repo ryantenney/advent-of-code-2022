@@ -7,9 +7,10 @@ import co.tenney.ryan.aoc.day1.Day1
 import co.tenney.ryan.aoc.day2.Day2
 import co.tenney.ryan.aoc.day3.Day3
 import co.tenney.ryan.aoc.day4.Day4
+import co.tenney.ryan.aoc.day5.Day5
 
 fun main(args: Array<String>) {
-    listOf(Day1(), Day2(), Day3(), Day4()).forEach {
+    listOf(Day1(), Day2(), Day3(), Day4(), Day5()).forEach {
         it.run {
             processInput(readInput(day))
             time { part1() }.also { outputResult(day, 1, it) }
