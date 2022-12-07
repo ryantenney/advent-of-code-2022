@@ -9,9 +9,10 @@ import co.tenney.ryan.aoc.day3.Day3
 import co.tenney.ryan.aoc.day4.Day4
 import co.tenney.ryan.aoc.day5.Day5
 import co.tenney.ryan.aoc.day6.Day6
+import co.tenney.ryan.aoc.day7.Day7
 
 fun main(args: Array<String>) {
-    listOf(Day1(), Day2(), Day3(), Day4(), Day5(), Day6()).forEach {
+    listOf(Day1(), Day2(), Day3(), Day4(), Day5(), Day6(), Day7()).forEach {
         it.run {
             processInput(readInput(day))
             time { part1() }.also { outputResult(day, 1, it) }
