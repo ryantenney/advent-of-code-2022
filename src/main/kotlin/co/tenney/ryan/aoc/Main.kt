@@ -1,5 +1,8 @@
 package co.tenney.ryan.aoc
 
+import java.time.LocalDate
+import java.time.ZoneId
+
 import co.tenney.ryan.util.outputResult
 import co.tenney.ryan.util.time
 import co.tenney.ryan.util.inputFileToLines
@@ -11,10 +14,17 @@ import co.tenney.ryan.aoc.day5.Day5
 import co.tenney.ryan.aoc.day6.Day6
 import co.tenney.ryan.aoc.day7.Day7
 import co.tenney.ryan.aoc.day8.Day8
+import co.tenney.ryan.aoc.day9.Day9
+import co.tenney.ryan.aoc.day10.Day10
+import co.tenney.ryan.aoc.day11.Day11
+import co.tenney.ryan.aoc.day12.Day12
+import co.tenney.ryan.aoc.day13.Day13
 
 fun main(args: Array<String>) {
-    listOf(Day1(), Day2(), Day3(), Day4(), Day5(), Day6(), Day7(), Day8()).forEach {
-        it.run {
+    val today = LocalDate.now(ZoneId.of("America/New_York"))
+    val dayOfMonth: Int = if (today.year == 2022 && today.monthValue == 12) today.dayOfMonth else -1
+    listOf(Day1(), Day2(), Day3(), Day4(), Day5(), Day6(), Day7(), Day8(), Day9(), Day10(), Day11(), Day12(), Day13()).forEach {
+        if (dayOfMonth == -1 || dayOfMonth == it.day) it.run {
             processInput(readInput(day))
             time { part1() }.also { outputResult(day, 1, it) }
             time { part2() }.also { outputResult(day, 2, it) }
