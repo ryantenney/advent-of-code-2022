@@ -106,10 +106,6 @@ class Day9 : AocDay<Int>(9) {
 
 }
 
-fun IntPosition.sign(): IntPosition {
-    return IntPosition(x.sign, y.sign)
-}
-
 fun IntPosition.follow(other: IntPosition): IntPosition {
     return this + (other - this).sign()
 }

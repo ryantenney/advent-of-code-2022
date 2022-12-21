@@ -48,7 +48,9 @@ class Day12 : AocDay<Int>(12) {
     }
 
     fun search(start: Node, validPredicate: (Node, Node) -> Boolean, endCondition: (Node) -> Boolean): Int {
-        val toVisit: MutableList<Pair<Node, Int>> = mutableListOf<Pair<Node, Int>>(start to 0)
+        val toVisit: ArrayDeque<Pair<Node, Int>> = ArrayDeque<Pair<Node, Int>>()
+        toVisit.add(start to 0)
+
         val visited: MutableSet<Node> = mutableSetOf<Node>()
         while (!toVisit.isEmpty()) {
             val (node, cost) = toVisit.removeFirst()
@@ -57,10 +59,17 @@ class Day12 : AocDay<Int>(12) {
                     return cost
                 }
 
+                /*
                 node.neighbors
                     .filterNot { it in visited }
                     .filter { validPredicate(node, it) }
                     .forEach { toVisit.add(it to cost + 1) }
+                    */
+
+                node.edges()
+                    .filterNot { it.end in visited }
+                    .filter { validPredicate(node, it.end) }
+                    .forEach { toVisit.add(it.end to cost + 1) }
 
                 visited.add(node)
             }
@@ -88,4 +97,12 @@ data class Node(val pos: IntPosition, val elev: Int) {
         return neighbors.toSet()
     }
 
+    fun edges(): Set<Edge> {
+        return neighbors.map {
+            Edge(this, it, it.elev - elev)
+        }.toSet()
+    }
+
 }
+
+data class Edge(val start: Node, val end: Node, val weight: Int)
